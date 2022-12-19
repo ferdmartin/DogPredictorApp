@@ -20,8 +20,8 @@ def load_model():
   
   with ZipFile(saved_model, 'r') as zObject:
     zObject.extractall(path="saved_model/FerNetEfficientNetB2")
-  saved_model = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2")
-  return saved_model
+  model_to_load = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2")
+  return model_to_load
 
 @st.cache
 def load_classes():
@@ -42,7 +42,7 @@ if __name__ == '__main__':
   saved_model = load_model()
   class_names = load_classes()
 
-  st.header("Dog Breeds Detector")
+  st.header("Dog Breeds Predictor")
   st.write("Choose any dog image and get the corresponding breed:")
 
   uploaded_image = st.file_uploader("Choose an image...")
