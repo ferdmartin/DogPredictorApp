@@ -14,12 +14,12 @@ def load_model():
   model_location = '1jPO4OLmiEn3rFpF8wUv6Q7jkJzk9wK7n'
   save_dest = Path('saved_model')
   save_dest.mkdir(exist_ok=True)
-  saved_model = Path("saved_model/FerNetEfficientNetB2.zip")
-  if not saved_model.exists():
-    download_file_from_google_drive(model_location, saved_model)
+#   saved_model = Path("saved_model/FerNetEfficientNetB2.zip")
+#   if not saved_model.exists():
+#     download_file_from_google_drive(model_location, saved_model)
   
-  with ZipFile(saved_model, 'r') as zObject:
-    zObject.extractall(path="saved_model/FerNetEfficientNetB2")
+#   with ZipFile(saved_model, 'r') as zObject:
+#     zObject.extractall(path="saved_model/FerNetEfficientNetB2")
   model_to_load = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2")
   return model_to_load
 
