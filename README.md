@@ -1,1 +1,2 @@
-# DogPredictorApp
+# DogBreedsApp
+ 
