@@ -19,12 +19,11 @@ def load_model():
       download_file_from_google_drive(model_location, saved_model)
 
     # loading the temp.zip and creating a zip object
-  with ZipFile(saved_model, 'r') as zObject:
+    with ZipFile(saved_model, 'r') as zObject:
       # Extracting all the members of the zip 
       # into a specific location.
-      zObject.extractall(
-          path="saved_model/FerNetEfficientNetB2")
-  saved_model = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2/FerNet_EfficientNetB2")
+      zObject.extractall(path="saved_model/FerNetEfficientNetB2")
+  saved_model = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2")
   return saved_model
 
 @st.cache
