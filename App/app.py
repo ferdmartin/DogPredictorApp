@@ -5,6 +5,14 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image
 import json
+os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+
+'''
+path = "C:/Users/madhu/AppData/Local/Programs/Python/Python38/NeuralNetScratch/"
+dataset = os.path.join(path,"cats-and-dogs/")
+print(dataset)
+'''
+
 from zipfile import ZipFile
 
 from GDownload import download_file_from_google_drive
@@ -14,13 +22,21 @@ def load_model():
   model_location = '1jPO4OLmiEn3rFpF8wUv6Q7jkJzk9wK7n'
   save_dest = Path('saved_model')
   save_dest.mkdir(exist_ok=True)
-#   saved_model = Path("saved_model/FerNetEfficientNetB2.zip")
-#   if not saved_model.exists():
-#     download_file_from_google_drive(model_location, saved_model)
+  saved_model = Path("saved_model/FerNetEfficientNetB2.zip")
+  if not saved_model.exists():
+    download_file_from_google_drive(model_location, saved_model)
   
-#   with ZipFile(saved_model, 'r') as zObject:
-#     zObject.extractall(path="saved_model/FerNetEfficientNetB2")
-  model_to_load = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2")
+  with ZipFile(saved_model, 'r') as zObject:
+    zObject.extractall(path="saved_model/FerNetEfficientNetB2")
+    
+  os.environ['TF_XLA_FLAGS'] = '--tf_xla_enable_xla_devices'
+
+  '''
+  path = "saved_model"
+  dataset = os.path.join(path,"FerNetEfficientNetB2")
+  print(dataset)
+  '''
+  model_to_load = tf.keras.models.load_model("")
   return model_to_load
 
 @st.cache
