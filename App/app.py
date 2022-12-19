@@ -24,7 +24,7 @@ def load_model():
       # into a specific location.
       zObject.extractall(
           path="saved_model/FerNetEfficientNetB2")
-  saved_model = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2")
+  saved_model = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2/FerNet_EfficientNetB2")
   return saved_model
 
 @st.cache
