@@ -16,11 +16,10 @@ def load_model():
   save_dest.mkdir(exist_ok=True)
   saved_model = Path("saved_model/FerNetEfficientNetB2.zip")
   if not saved_model.exists():
-      download_file_from_google_drive(model_location, saved_model)
-
-    # loading the temp.zip and creating a zip object
-    with ZipFile(saved_model, 'r') as zObject:
-      zObject.extractall(path="saved_model/FerNetEfficientNetB2")
+    download_file_from_google_drive(model_location, saved_model)
+  
+  with ZipFile(saved_model, 'r') as zObject:
+    zObject.extractall(path="saved_model/FerNetEfficientNetB2")
   saved_model = tf.keras.models.load_model("saved_model/FerNetEfficientNetB2")
   return saved_model
 
